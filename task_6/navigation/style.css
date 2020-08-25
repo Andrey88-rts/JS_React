@@ -1,0 +1,10 @@
+.second {
+    background-color: rgb(180, 226, 53);
+    padding: 15px;
+    display: inline-block;
+}
+
+.second.second-ul {
+    background-color: rgb(53, 154, 161);
+    display: inline-block;
+}
