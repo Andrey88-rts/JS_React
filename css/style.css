@@ -126,7 +126,7 @@
 }
 
 .promo__bg {
-  min-height: 360px;
+  height: 360px;
   background: url("../img/mars.webp") center center/cover no-repeat;
   background-position: top;
   padding: 107px 0 0 61px;
@@ -191,7 +191,7 @@
 .promo__interactive-title:after {
   content: '';
   display: block;
-  width: 33%;
+  width: 100%;
   height: 2px;
   background-color: #000;
 }

@@ -28,6 +28,13 @@ document.addEventListener("DOMContentLoaded", () => {
             "Одержимость",
             "Скотт Пилигрим против...",
         ],
+        serials: [
+            "Рассказ служанки",
+            "Игра престолов",
+            "Анатомия страсти",
+            "Черное зеркало",
+            "Убивая Еву",
+        ],
     };
 
     // 1)
@@ -38,6 +45,20 @@ document.addEventListener("DOMContentLoaded", () => {
     const addForm = document.querySelector("form.add");
     const inputAddFilm = addForm.querySelector(".adding__input");
     const check = addForm.querySelector("[type='checkbox']");
+    // const blockMovie = document.querySelectorAll(".promo__menu-list");
+    const nameMovie = document.querySelectorAll(".promo__menu-item");
+    const title = document.querySelector(".promo__interactive-title");
+
+    nameMovie.forEach((link) => {
+        link.addEventListener("click", (e) => {
+            e.preventDefault();
+            console.log(e.target);
+            link.classList.toggle("promo__menu-item_active");
+            title.innerHTML = `<div class="promo__interactive-title">ПРОСМОТРЕННЫЕ ${link.textContent}</div>`;
+            sortArr(movieDB.serials);
+            createMovieList(movieDB.serials, filmList);
+        });
+    });
 
     const deleteAdv = (arr) => {
         arr.forEach((item) => {
@@ -95,7 +116,7 @@ document.addEventListener("DOMContentLoaded", () => {
         document.querySelectorAll(".delete").forEach((btn, i) => {
             btn.addEventListener("click", () => {
                 btn.parentElement.remove();
-                movieDB.movies.splice(i, 1);
+                films.splice(i, 1);
                 createMovieList(films, parent);
             });
         });
