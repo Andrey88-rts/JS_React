@@ -89,4 +89,36 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 
     setClock(".timer", deadline);
+
+    //Modal
+
+    const modalTrigger = document.querySelectorAll("[data-modal]");
+    const modal = document.querySelector(".modal");
+    const modalClose = document.querySelector("[data-close]");
+
+    function closeModal() {
+        modal.classList.toggle("show");
+        document.body.style.overflow = "";
+    }
+
+    modalTrigger.forEach((btn) => {
+        btn.addEventListener("click", () => {
+            modal.classList.toggle("show");
+            document.body.style.overflow = "hidden";
+        });
+    });
+
+    modalClose.addEventListener("click", closeModal);
+
+    modal.addEventListener("click", (e) => {
+        if (e.target === modal) {
+            closeModal();
+        }
+    });
+
+    document.addEventListener("keydown", (e) => {
+        if (e.code === "Escape" || e.code === "Delete") {
+            closeModal();
+        }
+    });
 });
