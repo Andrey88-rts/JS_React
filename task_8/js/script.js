@@ -192,12 +192,17 @@ window.addEventListener("DOMContentLoaded", () => {
   };
 
   getResource("http://localhost:3000/menu").then((data) => {
-    data.forEach(({img, altimg, title, descr, price}) => {
-      new MenuCard(img, altimg, title, descr, price, '.menu .container').render();
+    data.forEach(({ img, altimg, title, descr, price }) => {
+      new MenuCard(
+        img,
+        altimg,
+        title,
+        descr,
+        price,
+        ".menu .container"
+      ).render();
     });
   });
-
-  
 
   // Forms
 
@@ -281,4 +286,52 @@ window.addEventListener("DOMContentLoaded", () => {
   fetch("http://localhost:3000/menu")
     .then((resolve) => resolve.json())
     .then((data) => console.log(data));
+
+  //Slider
+
+  const slides = document.querySelectorAll(".offer__slide");
+  const arrowNext = document.querySelector(".offer__slider-next");
+  const arrowPrev = document.querySelector(".offer__slider-prev");
+  let total = document.querySelector("#total");
+  let current = document.querySelector("#current");
+  let slideIndex = 1;
+
+  slideShow(slideIndex);
+
+  if (slides.length < 10) {
+    total.textContent = `0${slides.length}`;
+  } else {
+    total.textContent = slides.length;
+  }
+
+  function slideShow(n) {
+    if (n > slides.length) {
+      slideIndex = 1;
+    }
+
+    if (n < 1) {
+      slideIndex = slides.length;
+    }
+    slides.forEach((item) => (item.style.display = "none"));
+
+    slides[slideIndex - 1].style.display = "block";
+
+    if (slides.length < 10) {
+      current.textContent = `0${slideIndex}`;
+    } else {
+      current.textContent = slideIndex;
+    }
+  }
+
+  function plusSlide(n) {
+    slideShow((slideIndex += n));
+  }
+
+  arrowNext.addEventListener("click", () => {
+    plusSlide(1);
+  });
+
+  arrowPrev.addEventListener("click", () => {
+    plusSlide(-1);
+  });
 });
