@@ -117,4 +117,4 @@ function calc() {
     getDynamicField("#age");
 }
 
-module.exports = calc;
+export default calc;
