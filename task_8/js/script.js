@@ -1,3 +1,8 @@
+require("es6-promise").polyfill();
+import "nodelist-foreach-polyfill";
+import "fetch-polyfill";
+import "whatwg-fetch";
+
 import tabs from "./modules/tabs.js";
 import calc from "./modules/calc.js";
 import cards from "./modules/cards.js";
