@@ -3,10 +3,14 @@ function closeModal(modalSelector) {
     modal.classList.add("hide");
     modal.classList.remove("show");
     document.body.style.overflow = "";
+    document.querySelector("body").style.paddingRight = 0 + "px";
 }
 
 function openModal(modalSelector, modalTimerId) {
     const modal = document.querySelector(modalSelector);
+    const scrollRight =
+        window.innerWidth - document.querySelector("body").offsetWidth + "px";
+    document.querySelector("body").style.paddingRight = scrollRight;
     modal.classList.add("show");
     modal.classList.remove("hide");
     document.body.style.overflow = "hidden";

@@ -2,7 +2,7 @@
     "name": "task_8",
     "version": "1.0.0",
     "description": "",
-    "main": "./js/script.js",
+    "main": "./js/bundle.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
     },
